@@ -18,6 +18,10 @@ import { ContactComponent } from './contact/contact.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { DishTableComponent } from './dish-table/dish-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const routes: Routes=[ //le ': Routes' permet de typer
   {path: '', component: HomeComponent},
@@ -34,7 +38,8 @@ const routes: Routes=[ //le ': Routes' permet de typer
     HomeComponent,
     ReserveComponent,
     ContactComponent,
-    MainDashComponent
+    MainDashComponent,
+    DishTableComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ const routes: Routes=[ //le ': Routes' permet de typer
     MatCardModule,
     RouterModule.forRoot(routes),
     MatGridListModule,
-    MatMenuModule //à ajouter pour naviguer entre les page, donc pour completer le routage
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule //à ajouter pour naviguer entre les page, donc pour completer le routage
   ],
   providers: [],
   bootstrap: [AppComponent]

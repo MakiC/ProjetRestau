@@ -16,7 +16,7 @@ export class DishTableComponent implements AfterViewInit {
   dataSource: DishTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['price', 'name'];
 
   constructor() {
     this.dataSource = new DishTableDataSource();

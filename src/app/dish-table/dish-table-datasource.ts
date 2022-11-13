@@ -8,30 +8,21 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface DishTableItem {
   name: string;
   id: number;
+  price:number;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DishTableItem[] = [
-  {id: 1, name: 'Boeuf Carotte'},
-  {id: 2, name: 'Thiebou dieun'},
-  {id: 3, name: 'Domada'},
-  {id: 4, name: 'Daxine'},
-  {id: 5, name: 'Thiere'},
-  {id: 6, name: 'Lak dieun'},
-  {id: 7, name: 'Lak yap'},
-  {id: 8, name: 'Dibi haoussa'},
-  {id: 9, name: 'Yassa'},
-  {id: 10, name: 'Thiou'},
-  {id: 11, name: 'Souloukhou'},
-  {id: 12, name: 'Nialeng'},
-  {id: 13, name: 'Mbaxal'},
-  {id: 14, name: 'Thieb bou honk'},
-  {id: 15, name: 'Mbaxalou saloum'},
-  {id: 16, name: 'Mafe'},
-  {id: 17, name: 'Soupou kandia'},
-  {id: 18, name: 'Soupou yel'},
-  {id: 19, name: 'Mbaxal bou waw'},
-  {id: 20, name: 'Mborokhé'},
+  {id: 1, name: 'boeuf carottes', price: 8.80},
+  {id: 2, name: 'brandade de morue', price: 9.90},
+  {id: 3, name: 'faux-filet sauce marchand de vin', price: 12.50},
+  {id: 4, name: 'galette complète', price: 6.40},
+  {id: 5, name: 'salade lyonnaise', price: 7.80},
+  {id: 6, name: 'joues de porc au cidre', price: 13.50},
+  {id: 7, name: 'salade au foie de volaille', price: 6.80},
+  {id: 8, name: 'cotelettes d\'agneau', price: 13.80},
+  {id: 9, name: 'salade de riz', price: 6.90},
+  {id: 10, name: 'escalope de poulet / boulgour', price: 9.80}
 ];
 
 /**
@@ -99,6 +90,7 @@ export class DishTableDataSource extends DataSource<DishTableItem> {
       switch (this.sort?.active) {
         case 'name': return compare(a.name, b.name, isAsc);
         case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'price': return compare(a.price, b.price, isAsc);
         default: return 0;
       }
     });

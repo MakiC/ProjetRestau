@@ -23,7 +23,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {QuickLunchService} from './services/quick-lunch.service';
-import{ReactiveFormsModule} from '@angular/forms';
+import{ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import{MatSelectModule} from '@angular/material/select';
+
+import {MAT_DATE_LOCALE} from '@angular/material/core'
 
 const routes: Routes=[ //le ': Routes' permet de typer
   {path: '', component: HomeComponent},
@@ -59,9 +66,15 @@ const routes: Routes=[ //le ': Routes' permet de typer
     MatTableModule,
     MatPaginatorModule,
     MatSortModule, //à ajouter pour naviguer entre les page, donc pour completer le routage
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
-  providers: [QuickLunchService],
+  providers: [{provide:MAT_DATE_LOCALE, useValue:'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

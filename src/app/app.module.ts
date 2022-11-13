@@ -22,6 +22,8 @@ import { DishTableComponent } from './dish-table/dish-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {QuickLunchService} from './services/quick-lunch.service';
+import{ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes=[ //le ': Routes' permet de typer
   {path: '', component: HomeComponent},
@@ -56,9 +58,10 @@ const routes: Routes=[ //le ': Routes' permet de typer
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule //à ajouter pour naviguer entre les page, donc pour completer le routage
+    MatSortModule, //à ajouter pour naviguer entre les page, donc pour completer le routage
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [QuickLunchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

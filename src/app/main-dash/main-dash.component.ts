@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
+import {QuickLunchService} from '../services/quick-lunch.service';
+import {Food} from '../model/food.interface';
+
 
 @Component({
   selector: 'app-main-dash',
@@ -9,25 +10,20 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 })
 export class MainDashComponent {
   /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
-
-      return [
-        { title: 'A la carte', cols: 2, rows: 1 },
-        { title: 'Burger', cols: 1, rows: 1 },
-        { title: 'Barbuc Mechouie', cols: 1, rows: 2 },
-        { title: 'Poulet', cols: 1, rows: 1 }
+  cards =  [
+        { title: 'Pizzas', cols: 2, rows: 1, id:'pzz' },
+        { title: 'Burger', cols: 2, rows: 1 , id:'brg'},
+        { title: 'Galette ', cols:2, rows: 1, id:'glt' }
       ];
-    })
-  );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  burgers: Food[] =[];
+  pizzas: Food[]=[];
+  galettes: Food[]=[];
+  constructor(private qls: QuickLunchService) {} //dès lors il va faire l'injection de dependance
+  ngOnInit():void{
+    this.burgers=this.qls.getBurgers();
+   this.burgers=this.qls.getBurgers();
+   this.pizzas=this.qls.getPizzas();
+   this.galettes=this.qls.getGalettes();
+  }
 }

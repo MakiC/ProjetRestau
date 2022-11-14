@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, FormControl, Validators, NgForm} from "@angular/forms";
 
 
 @Component({
@@ -14,6 +14,12 @@ export class ReserveComponent implements OnInit {
   timeOptions=["12:00","12:30","13:00","13:30","20:00","20:30","21:00","21:30"];
   peopleOptions=[1,2,3,4,5,6,7,8]
   constructor(private fb:FormBuilder) { }
+
+  client={firstName:'', lastName:'', email:'', tel:''}
+
+  finaliseReservation(form: NgForm){
+    console.log(form.value);
+  }
 
   ngOnInit(): void {
     this.createForm();

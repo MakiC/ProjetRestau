@@ -22,7 +22,29 @@
       </mat-select>
     </mat-form-field>
   </div>
-  {{reservationForm.value|json}}
 </form>
+{{reservationForm.value|json}}
+<form #f="ngForm" (submit)="finaliseReservation(f)">
+  <mat-form-field >
+  <input matInput type="text" name="firstNameL" [(ngModel)]="client.firstName" placeholder="Prénom"> <!-- le name est requis pour que angular puisse faire la liaison entre le template et le ts. Sinon la parenthèse pour communiquer du template vers typescript et crochet pour faire linverse donc on a du double binnding-->
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="client.lastName" name="lastName" placeholder="nom" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="client.email" name="email" placeholder="email" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="client.tel" name="telephone" placeholder="téléphone" required />
+  </mat-form-field>
+  <button mat-button type="submit">reserver</button>
+</form> <!--le '#' nous permet de creer une variabme cote template et qui prends pour valeur ngForm le formGroup fourni par angular-->
+{{f.controls['firstNameL']?.value}}
+{{f.controls['lastName']?.value}}
+{{f.controls['email']?.value}}
+{{f.controls['telephone']?.value}}
+
+
+
 
 

@@ -14,7 +14,7 @@ searchTerms$:Observable<string>=this.searchTerm.valueChanges;
 
   ngOnInit(): void {
     //On s'a  bonne
-    this.searchTerms$.subscribe(data =>console.log(data))
+    this.searchTerms$.pipe(debounceTime(500)).subscribe(data =>console.log(data))
   }
 
 }

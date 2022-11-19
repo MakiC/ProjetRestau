@@ -29,6 +29,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import{MatSelectModule} from '@angular/material/select';
+import {HttpClientModule} from '@angular/common/http';
 
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { ScheduleComponent } from './schedule/schedule.component'
@@ -37,7 +38,7 @@ const routes: Routes=[ //le ': Routes' permet de typer
   {path: '', component: HomeComponent},
   {path: 'carte', component: CarteComponent},
   {path: 'reserve', component:ReserveComponent},
-  {path: 'programme', component:ScheduleComponent},
+  {path: 'schedule', component:ScheduleComponent},
   {path:'contact', component:ContactComponent}
 ];
 
@@ -75,7 +76,8 @@ const routes: Routes=[ //le ': Routes' permet de typer
     MatFormFieldModule,
     FormsModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [{provide:MAT_DATE_LOCALE, useValue:'fr-FR'}],
   bootstrap: [AppComponent]

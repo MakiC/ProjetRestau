@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
+import {map} from "rxjs/operators";
 
 
 @Injectable({
@@ -10,6 +11,7 @@ export class ScheduleService {
 
   constructor(private httpClient:HttpClient) { }
   search(term:string):Observable<Object>{
-    return this.httpClient.get('assets/schedule.json');
+    // @ts-ignore
+    return this.httpClient.get('assets/schedule.json').pipe(map(res => res['events'].filter(evt => evt.title.indexOf(term)>-1)),tap(filterEvents=>console.log('filterEvents',filterEvents)));
   }
 }

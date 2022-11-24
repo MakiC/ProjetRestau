@@ -32,7 +32,8 @@ import{MatSelectModule} from '@angular/material/select';
 import {HttpClientModule} from '@angular/common/http';
 
 import {MAT_DATE_LOCALE} from '@angular/material/core';
-import { ScheduleComponent } from './schedule/schedule.component'
+import { ScheduleComponent } from './schedule/schedule.component';
+import { PhoneComponent } from './phone/phone.component'
 
 const routes: Routes=[ //le ': Routes' permet de typer
   {path: '', component: HomeComponent},
@@ -52,7 +53,8 @@ const routes: Routes=[ //le ': Routes' permet de typer
     ContactComponent,
     MainDashComponent,
     DishTableComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    PhoneComponent
   ],
   imports: [
     BrowserModule,
